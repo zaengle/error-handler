@@ -1,0 +1,31 @@
+{
+  "name": "@zaengle/error-handler",
+  "version": "1.0.0",
+  "description": "An error handler that returns custom error messages depending upon the status code",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src --presets @babel/preset-env --out-dir dist --ignore '**/__tests__/*'",
+    "prepare": "yarn build",
+    "preversion": "yarn lint",
+    "test": "jest",
+    "lint": "eslint -c .eslintrc.js --ext .js ./src"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "error handling"
+  ],
+  "author": "Zaengle",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.12.17",
+    "@babel/core": "^7.12.17",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.12.17",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.20.0",
+    "jest": "^26.6.3"
+  }
+}
