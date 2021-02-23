@@ -31,7 +31,7 @@ export default class Errors {
   /**
    * Parse errors and return a payload based on error status.
    *
-   * @return void
+   * @return {object} errorResponse
    */
   parse() {
     const status = this.errors.response ? this.errors.response.status : this.errors.status
@@ -93,7 +93,7 @@ export default class Errors {
   /**
    * Get the first validation error message for the given field.
    *
-   * @param {string} field
+   * @param {string | null} field
    * @return {string | string[] | null}
    */
   getFirst(field = null) {
