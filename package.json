@@ -17,6 +17,11 @@
     "error handling"
   ],
   "author": "Zaengle",
+  "homepage": "https://github.com/zaengle/error-handler#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaengle/error-handler"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.12.17",
