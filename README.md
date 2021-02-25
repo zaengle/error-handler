@@ -37,6 +37,7 @@ Useful methods for checking/retrieving specific errors (especially validation er
   - [`setAll(errors): this`](#setallerrors-this)
   - [`setValidation(errors): void`](#setvalidationerrors-void)
   - [`parse(): { status: number, message: string }`](#parse--status-number-message-string-)
+  - [`setAndParse(errors): { status: number, message: string }`](#setandparseerrors--status-number-message-string-)
   - [`add(errors): void`](#adderrors-void)
   - [`any(): boolean`](#any-boolean)
   - [`has(field: string): boolean`](#hasfield-string-boolean)
@@ -132,7 +133,7 @@ async middleware({ error, $errorHandler }) {
   try {
     // axios or Vuex action call here
   } catch (errors) {
-    const errorResponse = $errorHandler.setAll(errors).parse()
+    const errorResponse = $errorHandler.setAndParse(errors)
 
     error({
       statusCode: errorResponse.status,
@@ -151,7 +152,7 @@ export default {
       try {
         // axios call here
       } catch (errors) {
-        const errorResponse = this.$errorHandler.setAll(errors).parse()
+        const errorResponse = this.$errorHandler.setAndParse(errors)
 
         // Do something with errorResponse
       }
@@ -185,7 +186,7 @@ Defaults are provided for both arguments and can be found [here](src/ErrorMessag
 
 ### `setAll(errors): this`
 
-This method takes the errors that are passed to it and sets them as the class instance's errors. It returns `this` because it's meant to be chained with `parse`, but it can also be chained with other methods.
+This method takes the errors that are passed to it and sets them as the class instance's errors. It returns `this` so that it can be chained with other methods.
 
 ### `setValidation(errors): void`
 
@@ -194,6 +195,10 @@ This method takes an `errors` object that is typically the axios `response.data`
 ### `parse(): { status: number, message: string }`
 
 This method examines the class instance's errors and returns an object that includes the `status` and the `message`. If the `status` is equal to `422` (a validation error), `parse` will call the `setValidation` method.
+
+### `setAndParse(errors): { status: number, message: string }`
+
+This method will both set all errors and parse them (i.e., it can be used in place of `.setAll(errors).parse()`). It returns an object that includes the `status` and the `message`.
 
 ### `add(errors): void`
 
