@@ -48,6 +48,18 @@ export default class Errors {
   }
 
   /**
+   * Set all errors and parse them to get an error message.
+   *
+   * @param {*} errors
+   * @return {object} errorResponse
+   */
+  setAndParse(errors) {
+    this.errors = errors
+
+    return this.parse()
+  }
+
+  /**
    * Add errors to the existing errors.
    *
    * @param {object} errors

@@ -112,6 +112,22 @@ describe('Errors', () => {
     })
   })
 
+  it('sets and parses errors', () => {
+    const error = {
+      response: {
+        status: 403,
+      },
+    }
+    const errorResponse = errors.setAndParse(error)
+
+    expect(errors.errors).toStrictEqual(error)
+
+    expect(errorResponse).toStrictEqual({
+      status: 403,
+      message: defaultErrorMessages[403],
+    })
+  })
+
   it('adds errors to the existing errors', () => {
     errors.setAll(data)
 
